@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/dashboard.dart';
 import 'package:velga_application/Screens/home_page.dart';
 import 'package:velga_application/Screens/newaccount_page.dart';
 
@@ -26,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       await _auth.signIn(email, password);
       Get.snackbar("Success", "Logged in successfully");
-      Get.off(HomePage());
+      Get.off(DashboardPage());
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
@@ -47,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Container(
                   margin: EdgeInsets.only(left: size.height * 0.025),
-
                   height: size.height * 0.08,
                   child: Text(
                     "Hello",
@@ -179,14 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                     width: size.width * 0.80,
                     height: size.height * 0.07,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color.fromARGB(255, 78, 255, 84),
-                          const Color.fromARGB(255, 94, 94, 94),
-                        ],
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                      ),
+                      color: Colors.green,
                       borderRadius: BorderRadius.circular(30),
                     ),
 

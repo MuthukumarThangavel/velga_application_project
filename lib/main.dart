@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:velga_application/Screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:velga_application/auth.dart';
-import 'Screens/home_page.dart';
+import 'package:velga_application/Screens/attendenceHomePage.dart';
+import 'package:velga_application/Screens/attendenceInandOutPage.dart';
 import 'Screens/splash_screen.dart';
 import 'firebase_options.dart';
+import 'services/geofence_attendance_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

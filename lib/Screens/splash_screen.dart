@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/dashboard.dart';
 import 'package:velga_application/Screens/login_page.dart';
 import 'package:velga_application/Screens/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 2), () {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        Get.offAll(() => HomePage());
+        Get.offAll(() => DashboardPage());
       } else {
         Get.offAll(() => LoginPage());
       }

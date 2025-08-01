@@ -37,6 +37,9 @@ dependencies:
   get: ^4.7.2
   firebase_core: ^4.0.0
   firebase_auth: ^6.0.0
+  geofence_service: ^4.0.0
+  flutter_local_notifications: ^19.4.0
+
 
 dev_dependencies:
   flutter_test:
