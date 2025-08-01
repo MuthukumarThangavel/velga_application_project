@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../auth.dart';
+import 'login_page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(onPressed: () async {
         await _auth.signOut();
-        // Optionally navigate to the login page if your auth listener doesn’t do automatic redirection
+        Get.to(LoginPage());
         // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => LoginPage()));
       }, child: Text("Logout")),
       ),
