@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/home_page.dart';
 import 'package:velga_application/Screens/newaccount_page.dart';
 
+import '../auth.dart';
+
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final AuthService _auth = AuthService();
+
+  void login() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+    
+    try {
+      await _auth.signIn(email, password);
+      Get.snackbar("Success", "Logged in successfully");
+      Get.to(HomePage());
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +42,7 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: TextFormField(
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: 'Username',
                   border: OutlineInputBorder(),
@@ -32,6 +53,7 @@ class LoginPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: TextFormField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
@@ -44,7 +66,8 @@ class LoginPage extends StatelessWidget {
                 backgroundColor: Colors.lightGreenAccent
               ),
               onPressed: () {
-                Get.to(NewAccountPage()); 
+                login();
+                // Get.to(HomePage()); 
               },
               child: const Text('Login'),
             ),

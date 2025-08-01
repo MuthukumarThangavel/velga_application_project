@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velga_application/Screens/login_page.dart';
-import 'package:velga_application/Screens/newaccount_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:velga_application/auth.dart';
+import 'Screens/home_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,8 +20,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: NewAccountPage(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false, // Optional
+      home: StreamBuilder<User?>(
+        stream: AuthService().userStream,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasData) {
+            return HomePage();
+          }
+          return LoginPage();
+        },
+      ),
     );
   }
 }

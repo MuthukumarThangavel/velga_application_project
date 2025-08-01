@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/login_page.dart';
+
+import '../auth.dart';
 
 class NewAccountPage extends StatelessWidget {
-  const NewAccountPage({super.key});
+  NewAccountPage({super.key});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final AuthService _auth = AuthService();
+
+  void createAccount() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+    
+    try {
+      await _auth.signUp(email, password);
+      Get.snackbar("Success", "Account created successfully");
+      Get.to(LoginPage());
+    } catch (e) {
+      Get.snackbar("Error", e.toString());
+    }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +43,7 @@ class NewAccountPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: TextFormField(
+                controller: emailController,
                 decoration: InputDecoration(
                   labelText: "Email",
                   border: OutlineInputBorder(),
@@ -35,6 +56,7 @@ class NewAccountPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: TextFormField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   labelText: "Password",
                   border: OutlineInputBorder(),
@@ -83,7 +105,8 @@ class NewAccountPage extends StatelessWidget {
                 backgroundColor: Colors.lightGreenAccent
               ),
               onPressed: () {
-                Get.to(NewAccountPage()); 
+                createAccount();
+                // Get.to(NewAccountPage()); 
               },
               child: const Text('Create Account'),
             ),
