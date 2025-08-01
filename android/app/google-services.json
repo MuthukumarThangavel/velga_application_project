@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "329815332848",
+    "project_id": "velga-office-app",
+    "storage_bucket": "velga-office-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329815332848:android:16d25920870c4dbfb2ef35",
+        "android_client_info": {
+          "package_name": "com.example.velga_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzkYEJZCSPHK4XCYu16pGED_wOj7i6j54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
