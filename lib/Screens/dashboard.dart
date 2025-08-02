@@ -505,14 +505,235 @@
 //     );
 //   }
 // }
+//------------------
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:velga_application/Screens/attendenceHomePage.dart';
+// import 'package:velga_application/services/notification_helper.dart';
+
+// import '../services/geofence_attendance_service.dart';
+
+// class DashboardPage extends StatefulWidget {
+//   const DashboardPage({super.key});
+
+//   @override
+//   State<DashboardPage> createState() => _DashboardPageState();
+// }
+
+// class _DashboardPageState extends State<DashboardPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     final size = MediaQuery.of(context).size;
+
+//     // App colors
+//     const profileBgColor = Color.fromARGB(255, 0, 130, 237);
+
+// //    void initState() {
+// //   super.initState();
+// //   startGeofencing();  // Now listens for entry/exit and auto-punch
+// // }
+
+//   // This function is called automatically by the geofence service
+//   void _autoPunch(String type) {
+//     // 1. Save to Firestore or your attendance backend (if needed)
+//     // 2. Show a local notification to user
+//     showNotification('Attendance', 'Auto punch $type completed!');
+//     // 3. Optionally refresh the UI or attendance records
+//   }
+
+
+
+//     return Scaffold(
+//       backgroundColor: Colors.blue,
+//       extendBodyBehindAppBar: true,
+//       appBar: AppBar(
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//       ),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             // TOP PROFILE SECTION
+//             Container(
+//               height: size.height * 0.38,
+//               width: double.infinity,
+//               color: profileBgColor,
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   // Profile avatar
+//                   CircleAvatar(
+//                     radius: size.height * 0.07,
+//                     backgroundImage: NetworkImage(
+//                       'https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg',
+//                     ),
+//                     backgroundColor: Colors.white,
+//                   ),
+//                   const SizedBox(height: 16),
+//                   // Profile name
+//                   Text(
+//                     'MUTHUKUMAR',
+//                     style: TextStyle(
+//                       fontSize: size.height * 0.025,
+//                       fontWeight: FontWeight.bold,
+//                       color: Colors.white,
+//                       letterSpacing: 1,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+
+//             // BOTTOM ACTION CARDS SECTION
+//             Container(
+//               width: double.infinity,
+//               decoration: BoxDecoration(
+//                 color: Colors.white,
+//                 borderRadius: BorderRadius.vertical(
+//                   top: Radius.circular(size.height * 0.045),
+//                 ),
+//                 boxShadow: [
+//                   BoxShadow(
+//                     color: Colors.black12,
+//                     blurRadius: 8,
+//                     offset: Offset(0, -4),
+//                   ),
+//                 ],
+//               ),
+//               padding: EdgeInsets.symmetric(
+//                 horizontal: size.width * 0.06,
+//                 vertical: size.height * 0.04,
+//               ),
+//               child: Column(
+//                 children: [
+//                   // TOP ROW
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       DashboardCard(
+//                         icon: Icons.task,
+//                         label: "TASK",
+//                         onTap: () {},
+//                       ),
+//                       DashboardCard(
+//                         icon: Icons.calendar_month,
+//                         label: "ATTENDANCE",
+//                         onTap: () {
+//                           Get.to(AttendenceHomePage());
+//                         },
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(height: size.height * 0.025),
+//                   // MIDDLE ROW
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       DashboardCard(
+//                         icon: Icons.date_range,
+//                         label: "LEAVE",
+//                         onTap: () {},
+//                       ),
+//                       DashboardCard(
+//                         icon: Icons.attach_money_outlined,
+//                         label: "FEES",
+//                         onTap: () {},
+//                       ),
+//                     ],
+//                   ),
+//                   SizedBox(height: size.height * 0.025),
+//                   // BOTTOM ROW
+//                   Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       DashboardCard(
+//                         icon: Icons.inbox,
+//                         label: "INBOX",
+//                         onTap: () {},
+//                       ),
+//                       DashboardCard(
+//                         icon: Icons.star,
+//                         label: "REVIEW",
+//                         onTap: () {},
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // REUSABLE CARD WIDGET FOR DASHBOARD
+// class DashboardCard extends StatelessWidget {
+//   final IconData icon;
+//   final String label;
+//   final VoidCallback onTap;
+//   const DashboardCard({
+//     super.key,
+//     required this.icon,
+//     required this.label,
+//     required this.onTap,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final size = MediaQuery.of(context).size;
+//     return InkWell(
+//       onTap: onTap,
+//       borderRadius: BorderRadius.circular(size.height * 0.02),
+//       child: Container(
+//         height: size.height * 0.17,
+//         width: size.width * 0.36,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(size.height * 0.02),
+//           color: Colors.white,
+//           boxShadow: [
+//             BoxShadow(
+//               color: Colors.black26,
+//               blurRadius: 4,
+//               offset: Offset(2, 3),
+//             ),
+//           ],
+//           border: Border.all(color: Colors.black12, width: 0.7),
+//         ),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             CircleAvatar(
+//               radius: size.height * 0.035,
+//               backgroundColor: Colors.blue.shade50,
+//               child: Icon(
+//                 icon,
+//                 size: size.height * 0.035,
+//                 color: Colors.black87,
+//               ),
+//             ),
+//             SizedBox(height: size.height * 0.02),
+//             Text(
+//               label,
+//               style: TextStyle(
+//                 fontSize: size.height * 0.020,
+//                 fontWeight: FontWeight.w600,
+//                 color: Colors.black87,
+//                 letterSpacing: 0.5,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//-----------------------------
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velga_application/Screens/attendenceHomePage.dart';
-import 'package:velga_application/services/notification_helper.dart';
-
-import '../services/geofence_attendance_service.dart';
-
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -522,26 +743,26 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   @override
+  // void initState() {
+  //   super.initState();
+  //   // Start the geofencing service when the dashboard loads.
+  //   // This will automatically trigger punch-in/out based on location.
+  //   GeofenceAttendanceService.instance.start();
+  // }
+
+  // @override
+  // void dispose() {
+  //   // Stop the geofencing service when the dashboard is disposed.
+  //   GeofenceAttendanceService.instance.stop();
+  //   super.dispose();
+  // }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     // App colors
     const profileBgColor = Color.fromARGB(255, 0, 130, 237);
-
-//    void initState() {
-//   super.initState();
-//   startGeofencing();  // Now listens for entry/exit and auto-punch
-// }
-
-  // This function is called automatically by the geofence service
-  void _autoPunch(String type) {
-    // 1. Save to Firestore or your attendance backend (if needed)
-    // 2. Show a local notification to user
-    showNotification('Attendance', 'Auto punch $type completed!');
-    // 3. Optionally refresh the UI or attendance records
-  }
-
-
 
     return Scaffold(
       backgroundColor: Colors.blue,
@@ -564,7 +785,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   // Profile avatar
                   CircleAvatar(
                     radius: size.height * 0.07,
-                    backgroundImage: NetworkImage(
+                    backgroundImage: const NetworkImage(
                       'https://imgv3.fotor.com/images/gallery/a-man-profile-picture-with-blue-and-green-background-made-by-LinkedIn-Profile-Picture-Maker.jpg',
                     ),
                     backgroundColor: Colors.white,
@@ -592,7 +813,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(size.height * 0.045),
                 ),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 8,
@@ -613,13 +834,15 @@ class _DashboardPageState extends State<DashboardPage> {
                       DashboardCard(
                         icon: Icons.task,
                         label: "TASK",
-                        onTap: () {},
+                        onTap: () {
+                          // Handle Task navigation
+                        },
                       ),
                       DashboardCard(
                         icon: Icons.calendar_month,
                         label: "ATTENDANCE",
                         onTap: () {
-                          Get.to(AttendenceHomePage());
+                          Get.to(() => const AttendenceHomePage());
                         },
                       ),
                     ],
@@ -632,12 +855,16 @@ class _DashboardPageState extends State<DashboardPage> {
                       DashboardCard(
                         icon: Icons.date_range,
                         label: "LEAVE",
-                        onTap: () {},
+                        onTap: () {
+                          // Handle Leave navigation
+                        },
                       ),
                       DashboardCard(
                         icon: Icons.attach_money_outlined,
                         label: "FEES",
-                        onTap: () {},
+                        onTap: () {
+                          // Handle Fees navigation
+                        },
                       ),
                     ],
                   ),
@@ -649,12 +876,16 @@ class _DashboardPageState extends State<DashboardPage> {
                       DashboardCard(
                         icon: Icons.inbox,
                         label: "INBOX",
-                        onTap: () {},
+                        onTap: () {
+                          // Handle Inbox navigation
+                        },
                       ),
                       DashboardCard(
                         icon: Icons.star,
                         label: "REVIEW",
-                        onTap: () {},
+                        onTap: () {
+                          // Handle Review navigation
+                        },
                       ),
                     ],
                   ),
@@ -692,7 +923,7 @@ class DashboardCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(size.height * 0.02),
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black26,
               blurRadius: 4,
@@ -729,3 +960,4 @@ class DashboardCard extends StatelessWidget {
     );
   }
 }
+
