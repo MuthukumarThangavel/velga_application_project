@@ -6,7 +6,7 @@ class GeofenceAttendanceService {
   static final GeofenceAttendanceService instance = GeofenceAttendanceService._internal();
 
   final GeofenceService _service = GeofenceService.instance;
-
+   var hi;
   GeofenceAttendanceService._internal() {
     _service.setup(
       interval: 5000,
