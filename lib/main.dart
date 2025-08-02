@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:velga_application/Screens/attendenceHomePage.dart';
 import 'package:velga_application/Screens/attendenceInandOutPage.dart';
+import 'package:velga_application/Screens/termsandconditionpage.dart';
 import 'Screens/splash_screen.dart';
 import 'firebase_options.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false, // Optional
-      home: SplashScreen(),
+      home: Termsandconditionpage(),
     );
   }
 }
