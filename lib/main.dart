@@ -5,7 +5,6 @@ import 'package:velga_application/Screens/attendenceHomePage.dart';
 import 'package:velga_application/Screens/attendenceInandOutPage.dart';
 import 'Screens/splash_screen.dart';
 import 'firebase_options.dart';
-import 'services/geofence_attendance_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
