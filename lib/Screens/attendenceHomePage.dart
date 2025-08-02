@@ -645,6 +645,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/attendenceInandOutPage.dart';
 // import 'attendenceInandOutPage.dart'; // Uncomment if needed
 
 class AttendenceHomePage extends StatelessWidget {
@@ -746,7 +747,7 @@ class AttendenceHomePage extends StatelessWidget {
                   shape: StadiumBorder(),
                 ),
                 onPressed: () {
-                  // Get.to(() => AttendenceInandOutPage());
+                  Get.to(() => AttendenceInandOutPage());
                   // TODO: Uncomment and import your page
                 },
                 child: Text(
