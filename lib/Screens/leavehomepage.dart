@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class Leave1 extends StatefulWidget {
   const Leave1({super.key});
 
@@ -14,6 +15,8 @@ class _Leave1State extends State<Leave1> {
   bool visible = false;
   bool full=false;
   bool text =false;
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +58,7 @@ class _Leave1State extends State<Leave1> {
                       });
                     },
                     child: Card(
+                      color: Colors.white,
                       elevation: size.height*0.018,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.025)
@@ -69,7 +73,8 @@ class _Leave1State extends State<Leave1> {
                           child: Text("SHORT LEAVE",
                           style: TextStyle(
                             fontSize: size.height*0.021,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black
                           ),),
                         ),
                         SizedBox(width: size.width*0.3,),
@@ -119,17 +124,12 @@ class _Leave1State extends State<Leave1> {
                         }else{
                           visible=true;
                         }
-                        setState(() {
-                          if(text){
-                            text=false;
-                          }else{
-                            text=true;
-                          }
-                        });
+                       
                        
                       });
                     },
                     child: Card(
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.025)
                       ),
@@ -143,7 +143,8 @@ class _Leave1State extends State<Leave1> {
                             child: Text("HALF DAY LEAVE",
                             style: TextStyle(
                               fontSize: size.height*0.021,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
                             ),),
                           ),
                           SizedBox(width: size.width*0.235,),
@@ -225,6 +226,7 @@ class _Leave1State extends State<Leave1> {
                       });
                     },
                     child: Card(
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.025)
                       ),
@@ -238,7 +240,8 @@ class _Leave1State extends State<Leave1> {
                             child: Text("FULL DAY LEAVE",
                             style: TextStyle(
                                fontSize: size.height*0.021,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black
                             ),),
                           ),
                           SizedBox(width: size.width*0.235,),
@@ -291,7 +294,8 @@ class _Leave1State extends State<Leave1> {
                 children: [
                   GestureDetector(
                     onTap: (){
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Message Send"),duration: Duration(milliseconds: 500),));
+                      Get.snackbar('Message', 'send',colorText: Colors.white);
+                      
                     },
                     child: InkWell(
                      

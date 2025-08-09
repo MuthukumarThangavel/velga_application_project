@@ -9,6 +9,7 @@ class Msg1 extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      
       appBar: AppBar(
         backgroundColor: Colors.transparent
         ,

@@ -710,6 +710,7 @@ class AttendenceHomePage extends StatelessWidget {
                   // Total Working Hour Card
                   Card(
                     elevation: 2,
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
@@ -777,11 +778,14 @@ class AttendenceHomePage extends StatelessWidget {
             SizedBox(height: 10),
             // List of recent attendances
             Padding(
+              
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: List.generate(
                   recentAttendances.length,
-                  (i) => _AttendanceSummaryCard(data: recentAttendances[i]),
+                  (i) => _AttendanceSummaryCard(
+                    
+                    data: recentAttendances[i]),
                 ),
               ),
             ),

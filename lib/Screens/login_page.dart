@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velga_application/Screens/dashboard.dart';
 import 'package:velga_application/Screens/home_page.dart';
+import 'package:velga_application/Screens/navigation.dart';
 import 'package:velga_application/Screens/newaccount_page.dart';
 
 import '../auth.dart';
@@ -19,6 +20,18 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   final AuthService _auth = AuthService();
+
+  void signup()async{
+    String email =emailController.text.trim();
+    String password =passwordController.text.trim();
+    try{
+      await _auth.signUp(email, password);
+      Get.snackbar('Login', 'Successful');
+      Get.off(Navigationpage());
+    } catch(e){
+      Get.snackbar('Error', e.toString());
+    }
+  }
 
   void login() async {
     String email = emailController.text.trim();
@@ -40,10 +53,11 @@ class _LoginPageState extends State<LoginPage> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(backgroundColor: Colors.transparent),
+   
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: size.height*0.08,),
             Row(
               children: [
                 Container(
@@ -162,8 +176,8 @@ class _LoginPageState extends State<LoginPage> {
                                 });
                               },
                               icon: textVisible
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off),
+                                  ? Icon(Icons.visibility_off)
+                                  : Icon(Icons.visibility),
                             ),
                           ),
                           keyboardType: TextInputType.text,
@@ -185,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     child: TextButton(
                       onPressed: () {
-                        login();
+                    signup();
                       },
                       child: Text(
                         "SIGN IN",
