@@ -42,7 +42,7 @@ class Dashboard3 extends StatelessWidget {
 
             Card(
         color: Colors.blueGrey,     
-      elevation: 4,
+      elevation: size.height*0.005, 
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(size.height*0.02)),
       child:Container(
         height: size.height*0.235,
@@ -119,9 +119,9 @@ class Dashboard3 extends StatelessWidget {
     ),
     SizedBox(height: size.height*0.025,),
     Row(
-      
       children: [
         Card(
+          elevation: size.height*0.005,
           color: Colors.blueGrey,
           margin: EdgeInsets.only(left: size.height*0.018),
     child: Container(
@@ -189,6 +189,7 @@ class Dashboard3 extends StatelessWidget {
    ),
    SizedBox(width: size.width*0.05,),
    Card(
+    elevation: size.height*0.005,
           color: Colors.blueGrey,
     child: Container(
       height: size.height*0.2,
@@ -257,11 +258,10 @@ class Dashboard3 extends StatelessWidget {
     ),
     SizedBox(height: size.height*0.02,),
     Card(
-      elevation: 4,
+      elevation: size.height*0.005,
       color: Colors.blueGrey,
       child: Container(
-        
-        height: size.height*0.14,
+          height: size.height*0.14,
         width: size.width*0.9,
         child: Row(
           children: [
@@ -325,11 +325,9 @@ class Dashboard3 extends StatelessWidget {
                     fontSize: size.height*0.012,
                     color: Colors.white
                   ),),
-                )
-              
+                )      
             ],
                       ),
-  
             ],
           ),
         ),
@@ -350,20 +348,15 @@ class Dashboard3 extends StatelessWidget {
             )
           ],
         )
-        
-
-       
           ],
         )
       ),
     ),
   SizedBox(height: size.height*0.02,),
-
   Card(
-      elevation: 4,
+      elevation: size.height*0.005,
       color: Colors.blueGrey,
       child: Container(
-        
         height: size.height*0.14,
         width: size.width*0.9,
         child: Row(
@@ -429,10 +422,8 @@ class Dashboard3 extends StatelessWidget {
                     color: Colors.white
                   ),),
                 )
-              
             ],
                       ),
-  
             ],
           ),
         ),
@@ -452,19 +443,12 @@ class Dashboard3 extends StatelessWidget {
               color: Colors.greenAccent,),
             )
           ],
-        )
-        
-
-       
+        )       
           ],
         )
       ),
     ),  
-   
-   
-
-
-          ],
+           ],
         ),
       ),
     );

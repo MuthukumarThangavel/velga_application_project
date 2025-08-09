@@ -45,7 +45,7 @@ class Msg1 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.018)
                       ),
-                      elevation: size.height*0.020,
+                      elevation: size.height*0.005,
                       
                       child: Container(
                         decoration: BoxDecoration(
@@ -131,7 +131,7 @@ class Msg1 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.018)
                       ),
-                      elevation: size.height*0.020,
+                      elevation: size.height*0.005,
                       
                       child: Container(
                         decoration: BoxDecoration(
@@ -219,7 +219,7 @@ class Msg1 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.018)
                       ),
-                      elevation: size.height*0.020,
+                      elevation: size.height*0.005,
                       
                       child: Container(
                         decoration: BoxDecoration(
@@ -307,7 +307,7 @@ class Msg1 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.018)
                       ),
-                      elevation: size.height*0.020,
+                      elevation: size.height*0.005,
                       
                       child: Container(
                         decoration: BoxDecoration(
@@ -395,7 +395,7 @@ class Msg1 extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(size.height*0.018)
                       ),
-                      elevation: size.height*0.020,
+                      elevation: size.height*0.005,
                       
                       child: Container(
                         decoration: BoxDecoration(
