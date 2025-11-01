@@ -1,42 +1,107 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:velga_application/Screens/adminpage.dart';
+import 'package:velga_application/Screens/login_page.dart';
+import 'package:velga_application/Screens/profileupdatepage.dart';
+import 'package:velga_application/Screens/susbmitpage.dart';
+import 'package:shared_preferences/shared_preferences.dart'; 
 
 class Profilepage extends StatelessWidget {
-  var myname = "vikraj";
+   final String uid; // ✅ accept uid from Navigationpage
+
+  const Profilepage({super.key, required this.uid});
+
+  // 1. New function to clear data and navigate
+  Future<void> _performSignOut() async {
+    try {
+      // Clear Local Data (Assuming you save login status or user ID here)
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      
+      // 'user_token' அல்லது 'isLoggedIn' போன்ற key-களை நீங்கள் Clear செய்ய வேண்டும்.
+      // இது உங்களின் பயன்பாட்டைப் பொறுத்து மாறும். 
+      // கீழே உள்ள கோடு அனைத்து தரவுகளையும் நீக்குகிறது, இது பாதுகாப்பானது:
+      await prefs.clear(); 
+      
+      // 2. Navigate to Login Page and remove all previous screens
+      // Get.offAll() பயன்படுத்தினால், இனி "Back" பட்டனை அழுத்த முடியாது.
+      Get.offAll(() => LoginPage()); 
+
+      Get.snackbar(
+        'Success', 
+        'Signed out successfully. Your session has been cleared.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+
+    } catch (e) {
+      Get.snackbar(
+        'Error', 
+        'Error during sign out: $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
+  }
+
+  // 2. _showSignOutDialog function-ஐ _performSignOut-க்கு அழைப்பு விடுக்கும்படி மாற்றுதல்
+  void _showSignOutDialog() {
+    Get.dialog(
+      AlertDialog(
+        title: const Text('Sign Out'),
+        content: const Text('Are you sure you want to sign out and clear your session?'),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Get.back(); // Dialog-ஐ மூடுதல்
+              _performSignOut(); // Sign Out செயல்முறையைத் தொடங்குதல்
+            },
+            child: const Text('Sign Out'),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.white,
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
             onPressed: () {
-              Get.snackbar('Info', 'Edit profile functionality would be implemented here');
+              Get.to(() => Updatepage());
             },
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             // Profile Header
             _buildProfileHeader(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
             // User Information
             _buildUserInformation(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
             // Statistics
             _buildStatistics(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             
             // Quick Actions
             _buildQuickActions(),
@@ -46,15 +111,16 @@ class Profilepage extends StatelessWidget {
     );
   }
 
+  // All other _build... widget methods remain the same as provided.
+  // Note: Added 'const' to fixed widgets for performance improvement.
+
   Widget _buildProfileHeader() {
-    
-      
       return Card(
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(
@@ -76,7 +142,7 @@ class Profilepage extends StatelessWidget {
                     BoxShadow(
                       color: Colors.black26,
                       blurRadius: 10,
-                      offset: Offset(0, 5),
+                      offset: const Offset(0, 5),
                     ),
                   ],
                 ),
@@ -87,10 +153,10 @@ class Profilepage extends StatelessWidget {
                 ),
               ),
               
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               
               // Name
-              Text(
+              const Text(
                 'User Name',
                 style: TextStyle(
                   color: Colors.white,
@@ -99,10 +165,10 @@ class Profilepage extends StatelessWidget {
                 ),
               ),
               
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               
               // Employee ID
-              Text(
+              const Text(
                 'ID:',
                 style: TextStyle(
                   color: Colors.white70,
@@ -110,16 +176,16 @@ class Profilepage extends StatelessWidget {
                 ),
               ),
               
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               
               // Department
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(
+                child: const Text(
                   'Department',
                   style: TextStyle(
                     color: Colors.white,
@@ -131,15 +197,15 @@ class Profilepage extends StatelessWidget {
           ),
         ),
       );
-   
+    
   }
 
-  Widget _buildUserInformation() {  
+  Widget _buildUserInformation() {
       return Card(
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -151,16 +217,16 @@ class Profilepage extends StatelessWidget {
                   color: Colors.grey[800],
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               
               _buildInfoRow('Full Name','John Doe', Icons.person),
-              Divider(),
+              const Divider(),
               _buildInfoRow('Email', 'john.doe@company.com', Icons.email),
-              Divider(),
+              const Divider(),
               _buildInfoRow('Employee ID', 'EMP001', Icons.badge),
-              Divider(),
+              const Divider(),
               _buildInfoRow('Department', 'Engineering', Icons.business),
-              Divider(),
+              const Divider(),
               _buildInfoRow('Join Date', '23/07/2025', Icons.calendar_today),
             ],
           ),
@@ -174,7 +240,7 @@ class Profilepage extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -186,7 +252,7 @@ class Profilepage extends StatelessWidget {
                 color: Colors.grey[800],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             
             
               
@@ -197,19 +263,19 @@ class Profilepage extends StatelessWidget {
                       Expanded(
                         child: _buildStatCard('Total Days','hi', Icons.calendar_today, Colors.blue),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Expanded(
                         child: _buildStatCard('Present', 'hii', Icons.check_circle, Colors.green),
                       ),
                     ],
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
                       Expanded(
                         child: _buildStatCard('Total Hours', 'h', Icons.access_time, Colors.orange),
                       ),
-                      SizedBox(width: 12),
+                      const SizedBox(width: 12),
                       Expanded(
                         child: _buildStatCard('Avg Hours', 'h', Icons.trending_up, Colors.purple),
                       ),
@@ -229,7 +295,7 @@ class Profilepage extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -241,7 +307,7 @@ class Profilepage extends StatelessWidget {
                 color: Colors.grey[800],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             
             // Action buttons
             _buildActionButton(
@@ -254,7 +320,7 @@ class Profilepage extends StatelessWidget {
               },
             ),
             
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             
             _buildActionButton(
               'Download Report',
@@ -266,7 +332,7 @@ class Profilepage extends StatelessWidget {
               },
             ),
             
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             
             _buildActionButton(
               'Contact Support',
@@ -278,8 +344,33 @@ class Profilepage extends StatelessWidget {
               },
             ),
             
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
+
+
+            _buildActionButton(
+              'Admin',
+              'Access for only admin',
+              Icons.add_moderator_outlined,
+              Colors.cyan,
+              () {
+                Get.to(() => AdminPage());
+                
+              },
+            ),
+            const SizedBox(height: 20),
+            _buildActionButton(
+              'Account',
+              'Create your Account',
+              Icons.person,
+              Colors.purpleAccent,
+              () {
+                Get.to(() => Submitpage());
+                
+              },
+            ),
+            const SizedBox(height: 20),
             
+            // Sign Out button now calls the dialog which leads to data clearing
             _buildActionButton(
               'Sign Out',
               'Log out from the application',
@@ -297,11 +388,11 @@ class Profilepage extends StatelessWidget {
 
   Widget _buildInfoRow(String label, String value, IconData icon) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           Icon(icon, color: Colors.grey[600], size: 20),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,7 +422,7 @@ class Profilepage extends StatelessWidget {
 
   Widget _buildStatCard(String label, String value, IconData icon, Color color) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
@@ -339,7 +430,7 @@ class Profilepage extends StatelessWidget {
       child: Column(
         children: [
           Icon(icon, color: color, size: 24),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             value,
             style: TextStyle(
@@ -365,7 +456,7 @@ class Profilepage extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           border: Border.all(color: color.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(12),
@@ -373,14 +464,14 @@ class Profilepage extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: color.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(icon, color: color, size: 20),
             ),
-            SizedBox(width: 12),
+            const SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -413,28 +504,5 @@ class Profilepage extends StatelessWidget {
   String _formatDate(DateTime? date) {
     if (date == null) return 'N/A';
     return '${date.day}/${date.month}/${date.year}';
-  }
-
-  void _showSignOutDialog() {
-    Get.dialog(
-      AlertDialog(
-        title: Text('Sign Out'),
-        content: Text('Are you sure you want to sign out?'),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.back();
-              Get.snackbar('Success', 'Signed out successfully');
-            },
-            child: Text('Sign Out'),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
-          ),
-        ],
-      ),
-    );
   }
 }
