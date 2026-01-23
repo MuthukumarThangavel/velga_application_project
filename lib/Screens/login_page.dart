@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velga_application/Screens/dashboard.dart';
 import 'package:velga_application/Screens/home_page.dart';
-import 'package:velga_application/Screens/newaccount_page.dart';
 
 import '../auth.dart';
 
