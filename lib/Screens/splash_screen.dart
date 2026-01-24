@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:velga_application/Screens/dashboard.dart';
-import 'package:velga_application/Screens/login_page.dart';
-import 'package:velga_application/Screens/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'navigation.dart';
+import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -15,32 +16,21 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Simulate loading time, then check auth and navigate.
-    Timer(Duration(seconds: 2), () {
+
+    Timer(const Duration(seconds: 2), () {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        Get.offAll(() => DashboardPage());
+        Get.offAll(() => Navigationpage(uid: user.uid));
       } else {
-        Get.offAll(() => LoginPage());
+        Get.offAll(() => const LoginPage());
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FlutterLogo(size: 80),
-            SizedBox(height: 20),
-            Text('VELGA Pvt Ltd', style: TextStyle(fontSize: 20)),
-            SizedBox(height: 10),
-            CircularProgressIndicator(),
-          ],
-        ),
-      ),
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator(color: Colors.green)),
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:velga_application/Screens/attendenceHomePage.dart';
-import 'package:velga_application/Screens/attendenceInandOutPage.dart';
-import 'package:velga_application/Screens/termsandconditionpage.dart';
+import 'package:velga_application/Screens/login_page.dart';
 import 'Screens/splash_screen.dart';
 import 'firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,13 +16,21 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
+  
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+      
+      ),
       debugShowCheckedModeBanner: false, // Optional
-      home: Termsandconditionpage(),
+      home: SplashScreen(),
     );
   }
 }

@@ -7,6 +7,10 @@ class Task2 extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: SingleChildScrollView(
         child: Container(
           height: size.height*0.999,

@@ -1,898 +1,300 @@
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-
-// class AttendenceHomePage extends StatelessWidget {
-//   const  AttendenceHomePage({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var size = MediaQuery.of(context).size;
-//     return  Scaffold(
-//       extendBodyBehindAppBar: true,
-//       backgroundColor: const Color.fromARGB(255, 223, 223, 223),
-//       appBar: AppBar(
-//         backgroundColor: Colors.transparent,
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-
-//             Container(
-//             height: size.height*0.35,
-//             width: size.width*1.0,
-//             decoration: BoxDecoration(
-//               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(size.height*0.05),
-//               bottomRight: Radius.circular(size.height*0.05)),
-//               color: Colors.blueAccent,
-
-//             ),
-//             child: Stack(
-//               children: [
-//                 Row(
-
-//                   children: [
-//                     Container(
-//                       margin: EdgeInsets.only(top: size.height*0.08,
-//                       left: size.height*0.028),
-//                       height: size.height*0.05,
-//                       width: size.width*0.9,
-//                       color: Colors.transparent,
-//                       child: Text("Let's Clock-In!",
-//                       style: TextStyle(
-//                         fontSize: size.height*0.04,
-//                         fontWeight: FontWeight.bold,
-//                         color: Colors.white
-//                       ),),
-//                     )
-//                   ],
-//                 ),
-//                 Row(
-//                   children: [
-//                     Container(
-//                       margin: EdgeInsets.only(top: size.height*0.13,
-//                       left: size.height*0.030),
-//                        height: size.height*0.05,
-//                       width: size.width*0.9,
-//                       color: Colors.transparent,
-//                       child: Text("Don't miss your clock in schedule ",
-//                       style: TextStyle(
-//                         color: const Color.fromARGB(255, 216, 212, 212),
-//                         fontSize: size.height*0.018
-//                       ),),
-//                     )
-//                   ],
-//                 ),
-
-//                 Positioned(
-//                   right: size.width*-0.40,
-//                   top: size.height*0.05,
-//                   child: Container(
-//                     height: size.height*0.12,
-//                     width: size.width*1.09,
-//                     decoration: BoxDecoration(
-//                       image: DecorationImage(
-//                         image: NetworkImage("https://tse2.mm.bing.net/th/id/OIP.JBrHEAZcZGa8BPEOyLi8vgHaNL?pid=Api&P=0&h=180")),
-//                         color: Colors.transparent,
-//                     ),
-
-//                   ),
-//                 ),
-
-//               ],
-//             ),
-
-//           ),
-
-//          Stack(
-//           clipBehavior: Clip.none,
-//           children: [
-//              Container(
-//             height: size.height*0.3,
-//             width: size.width*1.09,
-//             color: Colors.transparent,
-//             child: Stack(
-//               clipBehavior: Clip.none,
-//               children: [
-//                 Container(
-//                  height: size.height*0.3,
-//             width: size.width*1.09,
-//             color: Colors.transparent,
-//             child: Stack(
-//               clipBehavior: Clip.none,
-//               children: [
-//                 Positioned(
-//                                 top: size.height*-0.16,
-//                               child: Container(
-//                                 margin: EdgeInsets.only(left: size.height*0.014),
-//                                 height: size.height*0.29,
-//                                 width: size.width*0.94,
-//                                 decoration: BoxDecoration(
-//                                   borderRadius: BorderRadius.circular(size.height*0.02),
-//                                   color: Colors.white
-
-//                                 ),
-//                                 child: Column(
-//                                   children: [
-//                                     Row(
-//                                       children: [
-//                                         Container(
-//                                           margin: EdgeInsets.only(top: size.height*0.02,
-//                                           left: size.height*0.023),
-//                                           child: Text("Total Working Hour",
-//                                           style: TextStyle(
-//                                             fontSize: size.height*0.024,
-//                                             fontWeight: FontWeight.bold,
-//                                             color: Colors.black
-//                                           ),),
-//                                         )
-//                                       ],
-//                                     ),
-//                                     Row(
-//                                       children: [
-//                                         Container(
-//                                           margin: EdgeInsets.only(top: size.height*0.004,
-//                                           left: size.height*0.026),
-//                                           child: Text("Paid Period 1 Sept 2024-30 Sept 2024",
-//                                           style: TextStyle(
-//                                             fontSize: size.height*0.016,
-
-//                                             color: Colors.black
-//                                           ),),
-//                                         )
-//                                       ],
-//                                     ),
-
-//                                     Row(
-//                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                                       children: [
-//                                         Container(
-//                                           margin: EdgeInsets.only(top:size.height*0.009),
-//                                           height: size.height*0.085,
-//                                           width:size.width*0.39,
-
-//                                           decoration: BoxDecoration(
-//                                             color: Colors.transparent,
-//                                             borderRadius: BorderRadius.circular(size.height*0.01),
-//                                             border: Border.all(color: Colors.black,width: size.height*0.0003)
-//                                           ),
-//                                           child: Container(
-//                                             height: size.height*0.2,
-//                                             width: size.width*0.3,
-//                                             child: Column(
-//                                               children: [
-//                                                 Row(
-
-//                                               children: [
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(top: size.height*0.010,
-//                                                   left: size.height*0.010),
-//                                                   child: Icon(Icons.alarm,
-//                                                   size: size.height*0.022,
-//                                                   color: Colors.grey,),
-//                                                 ),
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(
-//                                                     top: size.height*0.013,
-//                                                   left: size.height*0.008
-//                                                   ),
-//                                                   child: Text("Today",
-//                                                   style: TextStyle(
-//                                                     fontSize: size.height*0.016,
-//                                                     color: Colors.grey,
-//                                                     fontWeight: FontWeight.bold
-//                                                   ),),
-//                                                 )
-//                                               ],
-//                                             ),
-//                                             Row(
-
-//                                               children: [
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(
-//                                                     top: size.height*0.002,
-//                                                     left: size.height*0.015),
-//                                                   child: Text("00.00 Hrs",
-//                                                   style: TextStyle(
-//                                                     fontSize: size.height*0.025,
-//                                                     color: Colors.black,
-//                                                     fontWeight: FontWeight.bold
-//                                                   ),),
-//                                                 )
-//                                               ],
-//                                             )
-
-//                                               ],
-//                                             )
-//                                           ),
-//                                         ),
-
-//                                           Container(
-//                                           margin: EdgeInsets.only(top:size.height*0.009),
-//                                           height: size.height*0.085,
-//                                           width:size.width*0.39,
-
-//                                           decoration: BoxDecoration(
-//                                             color: Colors.transparent,
-//                                             borderRadius: BorderRadius.circular(size.height*0.01),
-//                                             border: Border.all(color: Colors.black,width: size.height*0.0003)
-//                                           ),
-//                                           child: Container(
-//                                             height: size.height*0.2,
-//                                             width: size.width*0.3,
-//                                             child: Column(
-//                                               children: [
-//                                                 Row(
-
-//                                               children: [
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(top: size.height*0.010,
-//                                                   left: size.height*0.010),
-//                                                   child: Icon(Icons.alarm,
-//                                                   size: size.height*0.022,
-//                                                   color: Colors.grey,),
-//                                                 ),
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(
-//                                                     top: size.height*0.013,
-//                                                   left: size.height*0.008
-//                                                   ),
-//                                                   child: Text("This Pay Period",
-//                                                   style: TextStyle(
-//                                                     fontSize: size.height*0.016,
-//                                                     color: Colors.grey,
-//                                                     fontWeight: FontWeight.bold
-//                                                   ),),
-//                                                 )
-//                                               ],
-//                                             ),
-//                                             Row(
-
-//                                               children: [
-//                                                 Container(
-//                                                   margin: EdgeInsets.only(
-//                                                     top: size.height*0.002,
-//                                                     left: size.height*0.015),
-//                                                   child: Text("32.00 Hrs",
-//                                                   style: TextStyle(
-//                                                     fontSize: size.height*0.025,
-//                                                     color: Colors.black,
-//                                                     fontWeight: FontWeight.bold
-//                                                   ),),
-//                                                 )
-//                                               ],
-//                                             )
-
-//                                               ],
-//                                             )
-//                                           ),
-//                                         ),
-
-//                                             ],
-//                                     ),
-
-//                                     Container(
-//                                       height: size.height*0.065,
-//                                       width: size.width*0.8,
-
-//                                       margin: EdgeInsets.only(top: size.height*0.028),
-//                                       decoration: BoxDecoration(
-//                                         borderRadius: BorderRadius.circular(size.height*0.1),
-//                                         color: Colors.blueAccent,
-//                                       ),
-//                                       child: TextButton(
-
-//                                         onPressed: (){
-//                                           // Get.to(Attendence2());
-//                                         },
-//                                        child: Text("Clock In Now",
-//                                        style: TextStyle(
-//                                         fontSize: size.height*0.020,
-//                                         color: Colors.white,
-//                                         fontWeight: FontWeight.bold
-//                                        ),),
-//                                        ),
-//                                     )
-//                                   ],
-//                                 ),
-//                               ),
-
-//                             ),
-
-//               ],
-//             ),
-
-//                 ),
-
-//               ],
-//             ),
-
-//           ),
-
-//          Positioned(
-//                   top: size.height*0.155,
-
-//                   child:Container(
-//                     margin: EdgeInsets.only(left: size.height*0.015),
-//                   height: size.height*0.13,
-//                   width: size.width*0.93,
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(size.height*0.010),
-//                     color: Colors.white,
-//                     border: Border.all(
-//                       color: Colors.black,
-//                       width: size.width*0.0003)
-//                   ),
-//                   child: Column(
-//                     children: [
-//                       Row(
-//                         children: [
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.013),
-//                             child: Icon(Icons.calendar_month,
-//                             size: size.height*0.025,
-//                             color: const Color.fromARGB(255, 124, 124, 124),),
-//                           ),
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.008),
-//                             child: Text("27 September 2024",
-//                             style: TextStyle(
-//                               fontSize: size.height*0.018,
-//                               color: Colors.black,
-//                               fontWeight: FontWeight.bold
-//                             ),),
-//                           )
-//                         ],
-//                       ),
-
-//                       Container(
-//                         margin: EdgeInsets.only(top: size.height*0.010),
-//                         height: size.height*0.07,
-//                         width: size.width*0.88,
-//                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(size.height*0.015),
-//                           color: Colors.transparent,
-//                           border: Border.all(color: Colors.black,
-//                           width: size.width*0.0015)
-//                         ),
-//                         child: Column(
-//                           children: [
-//                             Row(
-
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.023),
-
-//                               child: Text("Total Hours",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),),
-//                             ),
-
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.074),
-//                               child: Text("Clock in & Out",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),
-//                               ),
-//                             )
-//                           ],
-//                         ),
-//                         Row(
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.023),
-
-//                               child: Text("08:00:00 hrs",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.022,
-//                                 fontWeight: FontWeight.bold
-
-//                               ),
-//                               ),
-//                             ),
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.026),
-
-//                               child: Text("09.00 AM - 05.00 PM",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.020,
-//                                 fontWeight: FontWeight.bold
-//                               ),),
-//                             )
-//                           ],
-//                         )
-
-//                           ],
-//                         )
-
-//                       )
-
-//                     ],
-//                   ),
-//                  ) ),
-//                  Positioned(
-//                   top: size.height*0.310,
-
-//                   child:Container(
-//                     margin: EdgeInsets.only(left: size.height*0.015),
-//                   height: size.height*0.13,
-//                   width: size.width*0.93,
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(size.height*0.010),
-//                     color: Colors.white,
-//                     border: Border.all(
-//                       color: Colors.black,
-//                       width: size.width*0.0003)
-//                   ),
-//                   child: Column(
-//                     children: [
-//                       Row(
-//                         children: [
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.013),
-//                             child: Icon(Icons.calendar_month,
-//                             size: size.height*0.025,
-//                             color: const Color.fromARGB(255, 124, 124, 124),),
-//                           ),
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.008),
-//                             child: Text("27 September 2024",
-//                             style: TextStyle(
-//                               fontSize: size.height*0.018,
-//                               color: Colors.black,
-//                               fontWeight: FontWeight.bold
-//                             ),),
-//                           )
-//                         ],
-//                       ),
-
-//                       Container(
-//                         margin: EdgeInsets.only(top: size.height*0.010),
-//                         height: size.height*0.07,
-//                         width: size.width*0.88,
-//                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(size.height*0.015),
-//                           color: Colors.transparent,
-//                           border: Border.all(color: Colors.black,
-//                           width: size.width*0.0015)
-//                         ),
-//                         child: Column(
-//                           children: [
-//                             Row(
-
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.023),
-
-//                               child: Text("Total Hours",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),),
-//                             ),
-
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.076),
-//                               child: Text("Clock in & Out",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),
-//                               ),
-//                             )
-//                           ],
-//                         ),
-//                         Row(
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.023),
-
-//                               child: Text("08:00:00 hrs",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.022,
-//                                 fontWeight: FontWeight.bold
-
-//                               ),
-//                               ),
-//                             ),
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.028),
-
-//                               child: Text("09.00 AM - 05.00 PM",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.020,
-//                                 fontWeight: FontWeight.bold
-//                               ),),
-//                             )
-//                           ],
-//                         )
-
-//                           ],
-//                         )
-
-//                       )
-
-//                     ],
-//                   ),
-//                  ) ),
-
-//                  Positioned(
-//                   top: size.height*0.465,
-
-//                   child:Container(
-//                     margin: EdgeInsets.only(left: size.height*0.015),
-//                   height: size.height*0.13,
-//                   width: size.width*0.93,
-//                   decoration: BoxDecoration(
-//                     borderRadius: BorderRadius.circular(size.height*0.010),
-//                     color: Colors.white,
-//                     border: Border.all(
-//                       color: Colors.black,
-//                       width: size.width*0.0003)
-//                   ),
-//                   child: Column(
-//                     children: [
-//                       Row(
-//                         children: [
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.013),
-//                             child: Icon(Icons.calendar_month,
-//                             size: size.height*0.025,
-//                             color: const Color.fromARGB(255, 124, 124, 124),),
-//                           ),
-//                           Container(
-//                             margin: EdgeInsets.only(top: size.height*0.010,
-//                             left: size.height*0.008),
-//                             child: Text("27 September 2024",
-//                             style: TextStyle(
-//                               fontSize: size.height*0.018,
-//                               color: Colors.black,
-//                               fontWeight: FontWeight.bold
-//                             ),),
-//                           )
-//                         ],
-//                       ),
-
-//                       Container(
-//                         margin: EdgeInsets.only(top: size.height*0.010),
-//                         height: size.height*0.07,
-//                         width: size.width*0.88,
-//                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(size.height*0.015),
-//                           color: Colors.transparent,
-//                           border: Border.all(color: Colors.black,
-//                           width: size.width*0.0015)
-//                         ),
-//                         child: Column(
-//                           children: [
-//                             Row(
-
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.023),
-
-//                               child: Text("Total Hours",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),),
-//                             ),
-
-//                             Container(
-//                               margin: EdgeInsets.only(top: size.height*0.008,left: size.height*0.074),
-//                               child: Text("Clock in & Out",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.015,
-//                                 fontWeight: FontWeight.w400
-//                               ),
-//                               ),
-//                             )
-//                           ],
-//                         ),
-//                         Row(
-//                           children: [
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.023),
-
-//                               child: Text("08:00:00 hrs",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.020,
-//                                 fontWeight: FontWeight.bold
-
-//                               ),
-//                               ),
-//                             ),
-//                             Container(
-//                               margin: EdgeInsets.only(left: size.height*0.037),
-
-//                               child: Text("09.00 AM - 05.00 PM",
-//                               style: TextStyle(
-//                                 fontSize: size.height*0.020,
-//                                 fontWeight: FontWeight.bold
-//                               ),),
-//                             )
-//                           ],
-//                         )
-
-//                           ],
-//                         )
-
-//                       )
-
-//                     ],
-//                   ),
-//                  ) ),
-
-//           ],
-//          ),
-
-//           ],
-
-//         ),
-//       ),
-
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:get/get.dart';
-import 'package:velga_application/Screens/attendenceInandOutPage.dart';
-// import 'attendenceInandOutPage.dart'; // Uncomment if needed
 
-class AttendenceHomePage extends StatelessWidget {
-  const AttendenceHomePage({super.key});
+class AttendenceHomePage extends StatefulWidget {
+  final String uid;
+  const AttendenceHomePage({super.key, required this.uid});
+
+  @override
+  State<AttendenceHomePage> createState() => _AttendenceHomePageState();
+}
+
+class _AttendenceHomePageState extends State<AttendenceHomePage> {
+  bool isClockedIn = false;
+  bool isClockedOut = false;
+  String? currentDocId;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkTodayStatus();
+  }
+
+  // ✅ Check today's attendance status
+  Future<void> _checkTodayStatus() async {
+    final today = DateFormat('dd MMMM yyyy').format(DateTime.now());
+    final snapshot = await FirebaseFirestore.instance
+        .collection('attendance')
+        .where('uid', isEqualTo: widget.uid)
+        .where('date', isEqualTo: today)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      final doc = snapshot.docs.first;
+      final data = doc.data();
+
+      setState(() {
+        currentDocId = doc.id;
+        isClockedIn = data['clockIn'] != null && data['clockIn'] != '';
+        isClockedOut = data['clockOut'] != null && data['clockOut'] != '';
+      });
+    }
+  }
+
+  // ✅ Clock In
+  Future<void> _clockIn() async {
+    final today = DateFormat('dd MMMM yyyy').format(DateTime.now());
+    final now = DateTime.now();
+    final formattedTime = DateFormat('hh:mm a').format(now);
+
+    // Check if already clocked in today
+    final snapshot = await FirebaseFirestore.instance
+        .collection('attendance')
+        .where('uid', isEqualTo: widget.uid)
+        .where('date', isEqualTo: today)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      Get.snackbar("Already Clocked In", "You have already clocked in today!");
+      return;
+    }
+
+    final docRef = await FirebaseFirestore.instance.collection('attendance').add({
+      'uid': widget.uid,
+      'date': today,
+      'clockIn': formattedTime,
+      'clockOut': '',
+      'totalHours': '',
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+
+    setState(() {
+      isClockedIn = true;
+      isClockedOut = false;
+      currentDocId = docRef.id;
+    });
+
+    Get.snackbar("Success", "Clocked In at $formattedTime");
+  }
+
+  // ✅ Clock Out
+  Future<void> _clockOut() async {
+    if (currentDocId == null) {
+      Get.snackbar("Error", "No active clock-in found for today!");
+      return;
+    }
+
+    if (isClockedOut) {
+      Get.snackbar("Already Clocked Out", "You have already clocked out today!");
+      return;
+    }
+
+    final now = DateTime.now();
+    final formattedTime = DateFormat('hh:mm a').format(now);
+
+    final docRef =
+        FirebaseFirestore.instance.collection('attendance').doc(currentDocId);
+    final snapshot = await docRef.get();
+    final data = snapshot.data();
+    if (data == null) return;
+
+    // ✅ Fix: parse with date to avoid 489384 hrs issue
+    final todayDate = DateFormat('dd MMMM yyyy').format(DateTime.now());
+    final clockInDateTime = DateFormat('dd MMMM yyyy hh:mm a')
+        .parse("$todayDate ${data['clockIn']}");
+
+    final duration = now.difference(clockInDateTime);
+    final totalHours =
+        "${duration.inHours.toString().padLeft(2, '0')}:${(duration.inMinutes % 60).toString().padLeft(2, '0')} hrs";
+
+    await docRef.update({
+      'clockOut': formattedTime,
+      'totalHours': totalHours,
+    });
+
+    setState(() {
+      isClockedOut = true;
+      isClockedIn = false;
+      currentDocId = null;
+    });
+
+    Get.snackbar("Success", "Clocked Out at $formattedTime");
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final today = DateFormat('dd MMMM yyyy').format(DateTime.now());
 
-    // TODO: Replace with data from Firestore
-    const recentAttendances = [
-      {
-        "date": "27 September 2024",
-        "totalHours": "08:00:00 hrs",
-        "clockInOut": "09.00 AM - 05.00 PM",
-      },
-      // Add more as needed...
-    ];
+    final Color containerColor = isClockedIn && !isClockedOut
+        ? Colors.green
+        : Colors.blueGrey;
+    final Color textColor = Colors.white;
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: const Color(0xFFEFEFEF),
+      backgroundColor: const Color(0xFFF4F6F9),
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text("Attendance", style: TextStyle(color: Colors.white)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Large header
-            Container(
-              height: size.height * 0.36,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(32),
+            const SizedBox(height: 20),
+
+            // 🔵 Status Container
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 400),
+                decoration: BoxDecoration(
+                  color: containerColor,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: containerColor.withOpacity(0.5),
+                      blurRadius: 10,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      isClockedIn && !isClockedOut
+                          ? "You are Clocked In!"
+                          : isClockedOut
+                              ? "You have Clocked Out Today"
+                              : "Not Clocked In Yet",
+                      style: TextStyle(
+                        color: textColor,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      isClockedIn && !isClockedOut
+                          ? "Tap below to Clock Out"
+                          : isClockedOut
+                              ? "You already completed today's attendance"
+                              : "Tap below to Clock In",
+                      style: TextStyle(color: textColor.withOpacity(0.8)),
+                    ),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: size.width * 0.8,
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: const StadiumBorder(),
+                        ),
+                        onPressed: () async {
+                          if (isClockedOut) {
+                            Get.snackbar(
+                                "Done", "You already clocked out today!");
+                          } else if (isClockedIn) {
+                            await _clockOut();
+                          } else {
+                            await _clockIn();
+                          }
+                          _checkTodayStatus(); // refresh after action
+                        },
+                        child: Text(
+                          isClockedOut
+                              ? "Completed"
+                              : isClockedIn
+                                  ? "Clock Out"
+                                  : "Clock In",
+                          style: TextStyle(
+                            color: containerColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              padding: EdgeInsets.only(
-                top: size.height * 0.08,
-                left: 28,
-                right: 28,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Let's Clock-In!",
-                    style: TextStyle(
-                      fontSize: size.height * 0.04,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Text(
-                    "Don't miss your clock in schedule",
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: size.height * 0.018,
-                    ),
-                  ),
-                  SizedBox(height: size.height * 0.03),
+            ),
 
-                  // Total Working Hour Card
-                  Card(
-                    elevation: 2,
+            const SizedBox(height: 30),
+
+            // 🕒 Attendance Details
+            StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('attendance')
+                  .where('uid', isEqualTo: widget.uid)
+                  .where('date', isEqualTo: today)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                  return const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text("No attendance for today."),
+                  );
+                }
+
+                final doc = snapshot.data!.docs.first;
+                final data = doc.data() as Map<String, dynamic>;
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Card(
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                    ),
+                        borderRadius: BorderRadius.circular(16)),
+                    elevation: 4,
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _WorkingHourBlock(
-                            icon: Icons.alarm,
-                            title: "Today",
-                            hours: "00.00 Hrs",
+                          Row(
+                            children: [
+                              const Icon(Icons.calendar_today,
+                                  color: Colors.blueAccent),
+                              const SizedBox(width: 8),
+                              Text(
+                                data['date'] ?? '-',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ],
                           ),
-                          SizedBox(width: 16),
-                          _WorkingHourBlock(
-                            icon: Icons.alarm,
-                            title: "This Pay Period",
-                            hours: "32.00 Hrs",
+                          const SizedBox(height: 10),
+                          Text(
+                            "Clock In: ${data['clockIn'] ?? '--'}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 15),
+                          ),
+                          Text(
+                            "Clock Out: ${data['clockOut'] == '' ? '--' : data['clockOut']}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 15),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            "Total Hours: ${data['totalHours'] == '' ? '--' : data['totalHours']}",
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
                           ),
                         ],
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            SizedBox(height: size.height * 0.03),
-
-            // Clock In Now button
-            SizedBox(
-              width: size.width * 0.8,
-              height: size.height * 0.065,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  shape: StadiumBorder(),
-                ),
-                onPressed: () {
-                  Get.to(() => AttendenceInandOutPage());
-                  // TODO: Uncomment and import your page
-                },
-                child: Text(
-                  "Clock In Now",
-                  style: TextStyle(
-                    fontSize: size.height * 0.020,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.025),
-
-            // Recent Attendance Section
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Recent Attendance",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-            // List of recent attendances
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: List.generate(
-                  recentAttendances.length,
-                  (i) => _AttendanceSummaryCard(data: recentAttendances[i]),
-                ),
-              ),
-            ),
-            SizedBox(height: 24),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// COMPONENT for Today's/PayPeriod working hour summary
-class _WorkingHourBlock extends StatelessWidget {
-  final IconData icon;
-  final String title, hours;
-
-  const _WorkingHourBlock({
-    required this.icon,
-    required this.title,
-    required this.hours,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Expanded(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Icon(icon, size: size.height * 0.022, color: Colors.grey),
-              SizedBox(width: 6),
-              Text(
-                title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 5),
-          Text(
-            hours,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: size.height * 0.025,
-              color: Colors.black87,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// COMPONENT for attendance summary cards
-class _AttendanceSummaryCard extends StatelessWidget {
-  final Map<String, String> data;
-  const _AttendanceSummaryCard({required this.data});
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
-      child: Padding(
-        padding: EdgeInsets.all(size.height * 0.015),
-        child: Row(
-          children: [
-            Icon(
-              Icons.calendar_month,
-              color: Colors.blueGrey,
-              size: size.height * 0.036,
-            ),
-            SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  data["date"]!,
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                SizedBox(height: 2),
-                Row(
-                  children: [
-                    Text(
-                      "Total Hours: ",
-                      style: TextStyle(fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      data["totalHours"]!,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "Clock In & Out: ",
-                      style: TextStyle(fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      data["clockInOut"]!,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
+                );
+              },
             ),
           ],
         ),
